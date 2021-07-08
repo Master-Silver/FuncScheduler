@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 
-namespace TaskTimer.Tests
+namespace FuncScheduler.Tests
 {
     public class FakeLogger : ILogger
     {
-        public IList<FakeLog> Logs { get; } = new List<FakeLog>();
+        public ConcurrentBag<FakeLog> Logs { get; } = new ConcurrentBag<FakeLog>();
 
         public IDisposable BeginScope<TState>(TState state)
         {
